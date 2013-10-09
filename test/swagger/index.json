@@ -1,0 +1,15 @@
+{
+  "apiVersion":"1.0",
+  "swaggerVersion":"1.2.5",
+  "basePath":"http://127.0.0.1:8000",
+  "apis":[
+  {
+    "path":"/api-docs.json/user",
+    "description":"User API - CRUD for Users"
+  },
+  {
+    "path":"/api-docs.json/heartbeat",
+    "description":"Heartbeat API"
+  }
+  ]
+}

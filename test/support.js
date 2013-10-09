@@ -4,8 +4,7 @@ var RestSupport = function() {
 
   RestSupport.prototype.get = function(resource, next) {
     var me = this;
-    console.log('resource',resource);
-
+    
     request({
       url: resource,
       method: 'GET',

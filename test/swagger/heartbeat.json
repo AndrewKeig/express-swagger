@@ -1,0 +1,43 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2.5",
+  "basePath": "http://127.0.0.1:8000",
+  "apis": [
+    {
+      "path": "/heartbeat",
+      "description": "Check if service is alive",
+      "operations": [
+        {
+          "httpMethod": "GET",
+          "summary": "Check if service is alive",
+          "notes": "Returns a status code",
+          "nickname": "getHeartbeatVersion",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json",
+            "application/xml"
+          ],
+          "protocols": [
+            "http"
+          ],
+          "authorizations": [
+            "authByOAuth"
+          ],
+          "errorResponses": [
+            {
+              "code": 400,
+              "reason": "Bad Request"
+            },
+            {
+              "code": 500,
+              "reason": "Internal server error"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "resourcePath": "/heartbeat"
+}

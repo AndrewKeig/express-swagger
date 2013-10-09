@@ -9,7 +9,7 @@ module.exports = function(grunt) {
     },
     cafemocha: {
       test: {
-          src: 'test/*.js',
+          src: 'test/index.js',
           options: {
               ui: 'bdd',
               reporter: 'spec',
@@ -24,5 +24,5 @@ module.exports = function(grunt) {
     }
   });
   
-  grunt.registerTask('test', [ 'jshint']);
+  grunt.registerTask('test', [ 'jshint', 'env:test','cafemocha:test' ]);
 };

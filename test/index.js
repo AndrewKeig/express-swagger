@@ -1,5 +1,4 @@
-var app = require('../app')
- , assert = require('assert')
+var assert = require('assert')
  , config = require('../lib/configuration')
  , RestSupport = require('./support');
 
@@ -9,15 +8,14 @@ describe('swagger api', function(){
     var body, response, statusCode;
     var url = config.get('swagger:hostUrl');
 
-    RestSupport.get(url + 'swagger', function(err, body, response){
-      body = body;
-      response = response;
-      statusCode = response.statusCode;
-    });
-
     it('should respond with 200', function(done){
-      assert.equal(200, statusCode);
-      done();
+      RestSupport.get(url + 'swagger', function(err, body, response){
+        body = body;
+        response = response;
+        statusCode = response.statusCode;
+        assert.equal(200, statusCode);
+        done();
+      });
     });
   });
 
@@ -26,15 +24,14 @@ describe('swagger api', function(){
     var body, response, statusCode;
     var url = config.get('swagger:applicationUrl');
 
-    RestSupport.get(url + 'api-docs.json', function(err, body, response){
-      body = body;
-      response = response;
-      statusCode = response.statusCode;
-    });
-
     it('should respond with 200', function(done){
-      assert.equal(200, statusCode);
-      done();
+      RestSupport.get(url + 'api-docs.json', function(err, body, response){
+        body = body;
+        response = response;
+        statusCode = response.statusCode;
+        assert.equal(200, statusCode);
+        done();
+      });
     });
   });
 
@@ -43,15 +40,14 @@ describe('swagger api', function(){
     var body, response, statusCode;
     var url = config.get('swagger:applicationUrl');
 
-    RestSupport.get(url + 'api-docs.json/heartbeat', function(err, body, response){
-      body = body;
-      response = response;
-      statusCode = response.statusCode;
-    });
-
     it('should respond with 200', function(done){
-      assert.equal(200, statusCode);
-      done();
+      RestSupport.get(url + 'api-docs.json/heartbeat', function(err, body, response){
+        body = body;
+        response = response;
+        statusCode = response.statusCode;
+        assert.equal(200, statusCode);
+        done();
+      });
     });
   });
 });

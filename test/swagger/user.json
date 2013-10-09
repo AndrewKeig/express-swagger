@@ -1,0 +1,74 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2.5",
+  "basePath": "http://127.0.0.1:8000",
+  "apis": [
+    {
+      "path": "/user",
+      "description": "Get user",
+      "operations": [
+        {
+          "httpMethod": "GET",
+          "summary": "Get user",
+          "notes": "Returns a user based on a token",
+          "responseClass": "User",
+          "nickname": "getUser",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json",
+            "application/xml"
+          ],
+          "protocols": [
+            "http"
+          ],
+          "authorizations": [
+            "authByOAuth"
+          ],
+          "parameters": [
+            {
+              "name": "token",
+              "description": "Token",
+              "paramType": "header",
+              "required": true,
+              "dataType": "String"
+            }
+          ],
+          "errorResponses": [
+            {
+              "code": 401,
+              "reason": "Unauthorised"
+            },
+            {
+              "code": 400,
+              "reason": "Bad request"
+            },
+            {
+              "code": 404,
+              "reason": "Not Found"
+            },
+            {
+              "code": 500,
+              "reason": "An internal server error"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "resourcePath": "/user",
+  "models": {
+    "User": {
+      "id": "User",
+      "properties": {
+        "userId": {
+          "type": "Int"
+        },
+        "name": {
+          "type": "String"
+        }
+      }
+    }
+  }
+}
