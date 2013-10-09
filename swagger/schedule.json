@@ -1,0 +1,206 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2.5",
+  "basePath": "http://127.0.0.1:8000",
+  "apis": [
+    {
+      "path": "/schedule/lesson",
+      "description": "Get schedule",
+      "operations": [
+        {
+          "httpMethod": "GET",
+          "summary": "Get schedule of lessons for user",
+          "notes": "Returns a users lesson schedule",
+          "responseClass": "ScheduleItem",
+          "nickname": "getLessonSchedule",
+          "consumes": [
+            "text/html"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "protocols": [
+            "http"
+          ],
+          "authorizations": [
+            "authByOAuth"
+          ],
+          "parameters": [
+            {
+              "name": "token",
+              "description": "Token",
+              "paramType": "header",
+              "required": true,
+              "dataType": "String"
+            },
+            {
+              "name": "appid",
+              "description": "appid",
+              "paramType": "header",
+              "required": true,
+              "dataType": "String"
+            },
+            {
+              "name": "start",
+              "description": "Date range start (unix timestamp [seconds]). Defaults to \"NOW\"",
+              "paramType": "query",
+              "required": false,
+              "dataType": "Integer"
+            },
+            {
+              "name": "end",
+              "description": "Date range end (unix timestamp [seconds]). Defaults to \"NOW + 7 days\"",
+              "paramType": "query",
+              "required": false,
+              "dataType": "Integer"
+            }
+          ],
+          "errorResponses": [
+            {
+              "code": 401,
+              "reason": "Unauthorised"
+            },
+            {
+              "code": 400,
+              "reason": "Bad request"
+            },
+            {
+              "code": 500,
+              "reason": "An internal server error"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/schedule/assignment",
+      "description": "Get assignments",
+      "operations": [
+        {
+          "httpMethod": "GET",
+          "summary": "Get assignments for user",
+          "notes": "Returns a user's assignments",
+          "responseClass": "ScheduleItem",
+          "nickname": "getScheduleAssignments",
+          "consumes": [
+            "text/html"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "protocols": [
+            "http"
+          ],
+          "authorizations": [
+            "authByOAuth"
+          ],
+          "parameters": [
+            {
+              "name": "token",
+              "description": "Token",
+              "paramType": "header",
+              "required": true,
+              "dataType": "String"
+            },
+            {
+              "name": "appid",
+              "description": "appid",
+              "paramType": "header",
+              "required": true,
+              "dataType": "String"
+            },
+            {
+              "name": "start",
+              "description": "Date range start (unix timestamp [seconds]). Defaults to \"NOW\"",
+              "paramType": "query",
+              "required": false,
+              "dataType": "Integer"
+            },
+            {
+              "name": "end",
+              "description": "Date range end (unix timestamp [seconds]). Defaults to \"NOW + 7 days\"",
+              "paramType": "query",
+              "required": false,
+              "dataType": "Integer"
+            },
+            {
+              "name": "filter",
+              "description": "view filter for the assignments.",
+              "paramType": "query",
+              "required": false,
+              "dataType": "String",
+              "allowableValues": {
+                "valueType": "LIST",
+                "values": [
+                  "submissions"
+                ]
+              }
+            }
+          ],
+          "errorResponses": [
+            {
+              "code": 401,
+              "reason": "Unauthorised"
+            },
+            {
+              "code": 400,
+              "reason": "Bad request"
+            },
+            {
+              "code": 500,
+              "reason": "An internal server error"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "resourcePath": "/schedule",
+  "models": {
+    "ScheduleItem": {
+      "id": "ScheduleItem",
+      "properties": {
+        "user": {
+          "type": "String",
+          "required": true
+        },
+        "sourceId": {
+          "type": "String",
+          "required": true
+        },
+        "sourceType": {
+          "type": "String",
+          "required": true
+        },
+        "startDate": {
+          "type": "Date",
+          "required": true
+        },
+        "endDate": {
+          "type": "Date",
+          "required": true
+        },
+        "location": {
+          "type": "String"
+        },
+        "metadata": {
+          "type": "Object"
+        },
+        "attachments": {
+          "type": "ScheduleItemAttachment"
+        }
+      }
+    },
+    "ScheduleItemAttachment": {
+      "id": "ScheduleItemAttachment",
+      "properties": {
+        "type": {
+          "type": "String"
+        },
+        "data": {
+          "type": "Object"
+        }
+      }
+    }
+  }
+}

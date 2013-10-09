@@ -1,0 +1,99 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2.5",
+  "basePath": "http://127.0.0.1:8000",
+  "apis": [
+    {
+      "path": "/product/{id}",
+      "description": "Get product",
+      "operations": [
+        {
+          "httpMethod": "GET",
+          "summary": "Get product",
+          "notes": "Returns a product based on an ID",
+          "responseClass": "Product",
+          "nickname": "getProduct",
+          "consumes": [
+            "text/html"
+          ],
+          "produces": [
+            "application/json",
+            "application/xml"
+          ],
+          "protocols": [
+            "http"
+          ],
+          "authorizations": [
+            "authByOAuth"
+          ],
+          "parameters": [
+            {
+              "name": "token",
+              "description": "Token",
+              "paramType": "header",
+              "required": true,
+              "dataType": "String"
+            },
+            {
+              "name": "id",
+              "description": "id",
+              "paramType": "path",
+              "required": true,
+              "dataType": "String"
+            },
+            {
+              "name": "appid",
+              "description": "appid",
+              "paramType": "header",
+              "required": true,
+              "dataType": "String"
+            }
+          ],
+          "errorResponses": [
+            {
+              "code": 401,
+              "reason": "Unauthorised"
+            },
+            {
+              "code": 400,
+              "reason": "Bad request"
+            },
+            {
+              "code": 404,
+              "reason": "Not Found"
+            },
+            {
+              "code": 500,
+              "reason": "An internal server error"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "resourcePath": "/product",
+  "models": {
+    "Product": {
+      "id": "Product",
+      "properties": {
+        "productId": {
+          "type": "String",
+          "required": true
+        },
+        "type": {
+          "type": "String",
+          "required": true
+        },
+        "title": {
+          "type": "String"
+        },
+        "url": {
+          "type": "String"
+        },
+        "metadata": {
+          "type": "String"
+        }
+      }
+    }
+  }
+}

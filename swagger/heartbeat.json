@@ -1,0 +1,59 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2.5",
+  "basePath": "http://127.0.0.1:8000",
+  "apis": [
+    {
+      "path": "/version",
+      "description": "Check if version is alive",
+      "operations": [
+        {
+          "httpMethod": "GET",
+          "summary": "Check if version is alive",
+          "notes": "Returns a status code",
+          "nickname": "getHeartbeatVersion",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json",
+            "application/xml"
+          ],
+          "protocols": [
+            "http"
+          ],
+          "authorizations": [
+            "authByOAuth"
+          ],
+          "parameters": [
+            {
+              "name": "Accept-Version",
+              "description": "Accept-Version",
+              "paramType": "header",
+              "required": true,
+              "dataType": "String"
+            },
+            {
+              "name": "appid",
+              "description": "appid",
+              "paramType": "header",
+              "required": true,
+              "dataType": "String"
+            }
+          ],
+          "errorResponses": [
+            {
+              "code": 400,
+              "reason": "Bad Request"
+            },
+            {
+              "code": 500,
+              "reason": "Internal server error"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "resourcePath": "/heartbeat"
+}

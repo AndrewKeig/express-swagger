@@ -1,0 +1,342 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2.5",
+  "basePath": "http://127.0.0.1:8000",
+  "apis": [
+    {
+      "path": "/highlight/{sourceId}",
+      "description": "Get highlights by sourceId parameter",
+      "operations": [
+        {
+          "httpMethod": "GET",
+          "summary": "Get all highlights by sourceId parameter",
+          "notes": "Returns a list of highlights based on sourceId parameter",
+          "responseClass": "Highlight",
+          "nickname": "getHighlights",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json",
+            "application/xml"
+          ],
+          "protocols": [
+            "http"
+          ],
+          "authorizations": [
+            "authByOAuth"
+          ],
+          "parameters": [
+            {
+              "name": "token",
+              "description": "Token",
+              "paramType": "header",
+              "required": true,
+              "dataType": "String"
+            },
+            {
+              "name": "sourceId",
+              "description": "sourceId",
+              "paramType": "path",
+              "required": true,
+              "dataType": "String"
+            },
+            {
+              "name": "appid",
+              "description": "appid",
+              "paramType": "header",
+              "required": true,
+              "dataType": "String"
+            }
+          ],
+          "errorResponses": [
+            {
+              "code": 401,
+              "reason": "Unauthorised"
+            },
+            {
+              "code": 400,
+              "reason": "Bad Request"
+            },
+            {
+              "code": 500,
+              "reason": "Internal server error"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/highlight",
+      "description": "Create highlight [-description]",
+      "operations": [
+        {
+          "httpMethod": "POST",
+          "summary": "Create a highlight by submitting a highlight",
+          "notes": "Create a highlight by submitting a highlight  [-notes]",
+          "responseClass": "Highlight",
+          "nickname": "postHighlights",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json",
+            "application/xml"
+          ],
+          "protocols": [
+            "http"
+          ],
+          "authorizations": [
+            "authByOAuth"
+          ],
+          "parameters": [
+            {
+              "name": "Highlight",
+              "description": "JSON for Highlight",
+              "paramType": "body",
+              "required": true,
+              "dataType": "HighlightRequired"
+            },
+            {
+              "name": "token",
+              "description": "Token",
+              "paramType": "header",
+              "allowMultiple": true,
+              "required": true,
+              "dataType": "String"
+            },
+            {
+              "name": "appid",
+              "description": "appid",
+              "paramType": "header",
+              "required": true,
+              "dataType": "String"
+            }
+          ],
+          "errorResponses": [
+            {
+              "code": 401,
+              "reason": "Unauthorised"
+            },
+            {
+              "code": 400,
+              "reason": "Bad Request"
+            },
+            {
+              "code": 500,
+              "reason": "Internal server error"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/highlight/{id}",
+      "description": "Delete highlight by id parameter",
+      "operations": [
+        {
+          "httpMethod": "DELETE",
+          "summary": "Delete highlight by id",
+          "notes": "Deletes a highlight based on id parameter",
+          "nickname": "deleteHighlight",
+          "consumes": [
+            "text/html"
+          ],
+          "produces": [
+            "application/json",
+            "application/xml"
+          ],
+          "protocols": [
+            "http"
+          ],
+          "authorizations": [
+            "authByOAuth"
+          ],
+          "parameters": [
+            {
+              "name": "token",
+              "description": "Token",
+              "paramType": "header",
+              "required": true,
+              "dataType": "String"
+            },
+            {
+              "name": "id",
+              "description": "id",
+              "paramType": "path",
+              "required": true,
+              "dataType": "String"
+            },
+            {
+              "name": "appid",
+              "description": "appid",
+              "paramType": "header",
+              "required": true,
+              "dataType": "String"
+            }
+          ],
+          "errorResponses": [
+            {
+              "code": 401,
+              "reason": "Unauthorised"
+            },
+            {
+              "code": 400,
+              "reason": "Bad Request"
+            },
+            {
+              "code": 500,
+              "reason": "Internal server error"
+            },
+            {
+              "code": 404,
+              "reason": "Not Found"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/highlight/{id}",
+      "description": "Update highlight comment by id parameter",
+      "operations": [
+        {
+          "httpMethod": "PUT",
+          "summary": "Update highlight by id",
+          "notes": "Update a highlight based on highlight parameter",
+          "nickname": "updateHighlight",
+          "consumes": [
+            "text/html"
+          ],
+          "produces": [
+            "application/json",
+            "application/xml"
+          ],
+          "protocols": [
+            "http"
+          ],
+          "authorizations": [
+            "authByOAuth"
+          ],
+          "parameters": [
+            {
+              "name": "token",
+              "description": "Token",
+              "paramType": "header",
+              "required": true,
+              "dataType": "String"
+            },
+            {
+              "name": "id",
+              "description": "id",
+              "paramType": "path",
+              "required": true,
+              "dataType": "String"
+            },
+            {
+              "name": "Highlight",
+              "description": "JSON for Highlight",
+              "paramType": "body",
+              "required": true,
+              "dataType": "HighlightUpdate"
+            },
+            {
+              "name": "appid",
+              "description": "appid",
+              "paramType": "header",
+              "required": true,
+              "dataType": "String"
+            }
+          ],
+          "errorResponses": [
+            {
+              "code": 401,
+              "reason": "Unauthorised"
+            },
+            {
+              "code": 400,
+              "reason": "Bad Request"
+            },
+            {
+              "code": 500,
+              "reason": "Internal server error"
+            },
+            {
+              "code": 404,
+              "reason": "Not Found"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "resourcePath": "/highlight",
+  "models": {
+    "Highlight": {
+      "id": "Highlight",
+      "properties": {
+        "sourceId": {
+          "type": "String",
+          "required": true
+        },
+        "sourceType": {
+          "type": "String",
+          "required": true
+        },
+        "pageId": {
+          "type": "String",
+          "required": true
+        },
+        "user": {
+          "type": "String",
+          "required": true
+        },
+        "colour": {
+          "type": "String"
+        },
+        "comment": {
+          "type": "String"
+        },
+        "note": {
+          "type": "String"
+        },
+        "creationTime": {
+          "type": "String"
+        },
+        "metadata": {
+          "type": "String"
+        }
+      }
+    },
+    "HighlightRequired": {
+      "id": "HighlightRequired",
+      "properties": {
+        "sourceId": {
+          "type": "String",
+          "required": true
+        },
+        "sourceType": {
+          "type": "String",
+          "required": true
+        },
+        "pageId": {
+          "type": "String",
+          "required": true
+        },
+        "user": {
+          "type": "String",
+          "required": true
+        }
+      }
+    },
+    "HighlightUpdate": {
+      "id": "HighlightUpdate",
+      "properties": {
+        "comment": {
+          "type": "String",
+          "required": true
+        }
+      }
+    }
+  }
+}

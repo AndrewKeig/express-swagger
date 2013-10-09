@@ -1,0 +1,9 @@
+{
+  "express": {
+    "port": 3000
+  },
+  "swagger": {
+    "applicationUrl":  "http://127.0.0.1:8080/api-docs.json",
+    "title":  "Express Swagger"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "apiVersion":"1.0",
+  "swaggerVersion":"1.2.5",
+  "basePath":"http://127.0.0.1:8000",
+  "apis":[
+  {
+    "path":"/api-docs.json/product",
+    "description":"Product API - CRUD for Products"
+  },
+  {
+    "path":"/api-docs.json/highlight",
+    "description":"Highlights API - CRUD for Highlights"
+  },
+  {
+    "path":"/api-docs.json/user",
+    "description":"User API - CRUD for Users"
+  },
+  {
+    "path":"/api-docs.json/authenticate",
+    "description":"Authentication API - Login / Logout"
+  },
+  {
+    "path":"/api-docs.json/lesson",
+    "description":"Lessons API - CRUD for Lessons"
+  },
+  {
+    "path":"/api-docs.json/app",
+    "description":"App API"
+  },
+  {
+    "path":"/api-docs.json/heartbeat",
+    "description":"Heartbeat API"
+  },
+  {
+    "path":"/api-docs.json/schedule",
+    "description":"Schedule API"
+  }
+  ]
+}
