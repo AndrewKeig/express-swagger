@@ -2,6 +2,15 @@
   "name": "node-swagger",
   "version": "0.0.1",
   "description": "Serving swagger via an express application",
+  "homepage": "https://github.com/andrewkeig/node-swagger",
+  "author": {
+    "name": "Andrew Keig",
+    "email": "andrew.keig@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/andrewkeig/node-swagger.git"
+  },
   "scripts": {
     "start": "node app.js"
   },
@@ -10,16 +19,13 @@
     "consolidate": "~0.9.1",
     "handlebars": "~1.0.12",
     "nconf": "~0.6.7",
-    "request": "~2.27.0",
-    "underscore": "~1.5.2"
+    "request": "~2.27.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-cafe-mocha": "~0.1.9",
     "grunt-env": "~0.4.0",
-    "grunt-contrib-jshint": "~0.6.4",
-    "supertest": "~0.8.0",
-    "grunt-shell-spawn": "~0.3.0"
+    "grunt-contrib-jshint": "~0.6.4"
   },
   "keywords": [
     "swagger",
