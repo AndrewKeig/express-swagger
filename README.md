@@ -1,24 +1,84 @@
-node-swagger
+express-swagger
 ==================
 
-node-swagger hosts a swagger enabled endpoint; but unlike other implementations of swagger decouples swagger from your application.  The swagger endpoints are hosted on a seperate express application; the endpoints are configured using JSON.
+express-swagger hosts swagger enabled endpoints via express; but unlike other implementations your API is respresented by raw swagger JSON files.
 
-Configuring these endpoints using JSON allows us to use these JSON files for validating swagger requests. see : node-swagger-validation
+Configuring these endpoints using JSON allows us to use these JSON files for validating swagger requests. todo : express-swagger-validation
 
 
+## add swagger endpoints to your application
+We will now add swagger to your application; these endpoints will serve the swagger assets and the JSON files that represent your API.
 
-## setup your application
+1. statics is the location of the swagger client files
+2. index is the location of the index.json file
+3. is the location of your resources
+4. title is the name given to th swagger web site
+5. applicationUrl is the url of your application
+ 
+```
+swagger(app, {
+  statics : '/public/swagger/', 
+  index : '/test/swagger/index.json', 
+  resources : '/test/swagger/', 
+  title : 'node swagger', 
+  applicationUrl : 'http://127.0.0.1:3000/api-docs.json' 
+});
+```
 
-Lets configure your application to use swagger.
 
-The below file should be stored in your application at location ```./swagger/index.json```. This is the file requested by our swagger host; it contains a list of api endpoints; each one is represented by another JSON file.
-The element ```applicationUrl``` is the url where the JSON files are hosted.
+Here is a full listing; we also include a templating engine so that we can set the ```applicationUrl``` in our ```public/swagger/index.html``` file.      
+
+```
+var express = require('express')
+  , cons = require('consolidate')
+  , http = require('http')
+  , swagger = require('express-swagger')
+  , app = express();
+
+app.engine('html', cons.handlebars);
+app.set('view engine', 'html');
+app.set('views', 'public');
+app.set('port', 3000);
+
+swagger(app, {
+  statics : '/public/swagger/', 
+  index : '/test/swagger/index.json', 
+  resources : '/test/swagger/', 
+  title : 'node swagger', 
+  applicationUrl : 'http://127.0.0.1:3000/api-docs.json' 
+});
+
+app.get('/user', function (req, res, next) {
+  var user = {
+    "userId" : "12345"
+    , "name" : "airasoul"
+  };
+
+  res.json(200, user);
+});
+
+app.use(app.router);
+http.createServer(app).listen(app.get('port'));
+module.exports = app;
+
+```
+
+
+## swagger index file
+
+Lets define a list of swagger endpoints in an index file.
+
+This file is requested by swagger at the following endpoint:
+
+[http://127.0.0.1:3000/api-docs.json](http://127.0.0.1:3000/api-docs.json)
+
+This file contains a list of api endpoints; each one is represented by another JSON file.  The element ```basePath``` is the url where the JSON files are hosted.
 
 ```
 {
   "apiVersion":"1.0",
   "swaggerVersion":"1.2.5",
-  "applicationUrl":"http://127.0.0.1:8000",
+  "basePath":"http://127.0.0.1:3000",
   "apis":[
   {
     "path":"/api-docs.json/user",
@@ -28,13 +88,15 @@ The element ```applicationUrl``` is the url where the JSON files are hosted.
 }
 ```
 
-The below file ```./swagger/user.json``` is for a ```/api-docs.json/user``` endpoint as described in the ```index.json``` file above; we are hosting this endpoint on port ```8000```.  See the swagger docs on how to configure swagger endpoints [https://github.com/wordnik/swagger-core/wiki](https://github.com/wordnik/swagger-core/wiki)
+## swagger resource file
+
+The below file ```./swagger/user.json``` is for a ```/api-docs.json/user``` endpoint as described in the ```index.json``` file above; we are hosting this endpoint on port ```3000```.  See the swagger docs on how to configure swagger endpoints [https://github.com/wordnik/swagger-core/wiki](https://github.com/wordnik/swagger-core/wiki)
 
 ```
 {
   "apiVersion": "1.0",
   "swaggerVersion": "1.2.5",
-  "basePath": "http://127.0.0.1:8000",
+  "basePath": "http://127.0.0.1:3000",
   "apis": [
     {
       "path": "/user",
@@ -107,57 +169,9 @@ The below file ```./swagger/user.json``` is for a ```/api-docs.json/user``` endp
 }
 ```
 
-## add swagger endpoints to your application
-We will now add a couple of swagger endpoints to your application; these will simply serve the JSON files discussed above.
-
-```note: the swagger client uses AJAX to make requests; as our application and swagger are decoupled and hosted seperately on different ports we need to enable CORS for our swagger host```
-
-```
-app.all('*', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Appid, token, Accept-Version");
-  
-  if ('OPTIONS' == req.method) {
-    res.send(200);
-  }
-  else {
-    next();
-  }
-});
-
-app.get('/api-docs.json', function (req, res, next) {
-  var models = require('../swagger/index.json');
-  res.json(200, models);
-});
-
-app.get('/api-docs.json/:resource', function (req, res, next) {
-  var models = require('../swagger/' + req.params.resource + '.json');
-  res.json(200, models);
-});
-```
-
-
-## setup node swagger
-Now we can configure our node-swagger instance; importantly ```applicationUrl``` should point to your application.
-
-```
-{
-  "express": {
-    "port": 3000
-  },
-  "swagger": {
-    "applicationUrl":  "http://127.0.0.1:8000/api-docs.json",
-    "title":  "Express Swagger"
-  }
-}
-```
-In order to start the express swagger application run
-
-
 
 ## Test
-With your application and the swagger host running; which hosts the JSON files run the tests.
+With your application run the tests.
 
 ```
 grunt test

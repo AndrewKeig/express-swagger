@@ -20,17 +20,17 @@ swagger(app, {
 
 
 app.get('/heartbeat', function (req, res, next) {
-    res.json(200, 'OK');
-  });
+  res.json(200, 'OK');
+});
 
-  app.get('/user', function (req, res, next) {
-    var user = {
-      "userId" : "12345"
-      , "name" : "airasoul"
-    };
+app.get('/user', function (req, res, next) {
+  var user = {
+    "userId" : "12345"
+    , "name" : "airasoul"
+  };
 
-    res.json(200, user);
-  });
+  res.json(200, user);
+});
 
 app.use(app.router);
 http.createServer(app).listen(app.get('port'));

@@ -1,15 +1,15 @@
 {
-  "name": "node-swagger",
+  "name": "express-swagger",
   "version": "0.0.1",
-  "description": "Serving swagger via an express application",
-  "homepage": "https://github.com/andrewkeig/node-swagger",
+  "description": "Serving swagger via express",
+  "homepage": "https://github.com/andrewkeig/express-swagger",
   "author": {
     "name": "Andrew Keig",
     "email": "andrew.keig@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/andrewkeig/node-swagger.git"
+    "url": "git://github.com/andrewkeig/express-swagger.git"
   },
   "scripts": {
     "start": "node app.js"
