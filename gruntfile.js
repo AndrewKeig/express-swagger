@@ -13,7 +13,7 @@ module.exports = function(grunt) {
       }
     },
     jshint: {
-      all: ['Gruntfile.js', 'lib/**/*.js', 'test/**/*.js'],
+      all: ['lib/**/*.js'],
       options : {
         "laxcomma" : true
       }

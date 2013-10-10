@@ -18,13 +18,11 @@
     "express": "~3.4.0",
     "consolidate": "~0.9.1",
     "handlebars": "~1.0.12",
-    "nconf": "~0.6.7",
     "request": "~2.27.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-cafe-mocha": "~0.1.9",
-    "grunt-env": "~0.4.0",
     "grunt-contrib-jshint": "~0.6.4"
   },
   "keywords": [
