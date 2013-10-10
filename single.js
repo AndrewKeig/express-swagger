@@ -1,7 +1,7 @@
 var express = require('express')
   , cons = require('consolidate')
   , http = require('http')
-  , swagger = require('../lib/swagger')
+  , swagger = require('./lib/swagger')
   , app = express();
 
 app.engine('html', cons.handlebars);
@@ -11,12 +11,13 @@ app.set('port', 3000);
 app.use(express.logger({ immediate: true, format: 'dev' }));
 
 swagger(app, {
-  statics : '/../public/swagger/', 
-  index : '/swagger/index.json', 
-  resources : '/swagger/', 
+  statics : '/public/swagger/', 
+  index : '/test/swagger/index.json', 
+  resources : '/test/swagger/', 
   title : 'node swagger', 
   applicationUrl : 'http://127.0.0.1:3000/api-docs.json' 
 });
+
 
 app.get('/heartbeat', function (req, res, next) {
     res.json(200, 'OK');
