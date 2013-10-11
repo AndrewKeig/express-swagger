@@ -182,6 +182,10 @@ The below file ```./swagger/user.json``` is for a ```/api-docs.json/user``` endp
 
 
 ## run test
-With your API/application running; you can run the tests; with this.
+Start the express application:
+
+```node test/app.js```
+
+Now run the tests:
 
 ```grunt test```
