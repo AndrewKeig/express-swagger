@@ -171,7 +171,7 @@ The below file ```./swagger/user.json``` is for a ```/api-docs.json/user``` endp
 
 
 ## Test
-With your application run the tests.
+With your API/application running; you can run the tests; with this.
 
 ```
 grunt test
