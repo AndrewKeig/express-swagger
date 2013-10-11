@@ -11,9 +11,6 @@
     "type": "git",
     "url": "git://github.com/andrewkeig/express-swagger.git"
   },
-  "scripts": {
-    "start": "node app.js"
-  },
   "dependencies": {
     "express": "~3.4.0",
     "consolidate": "~0.9.1",
