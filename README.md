@@ -5,6 +5,10 @@ express-swagger hosts swagger enabled endpoints via express; but unlike other im
 
 Configuring these endpoints using JSON allows us to use these JSON files for validating swagger requests. todo : express-swagger-validation
 
+## SwaggerUI
+You will need to install the client for swagger
+```npm install swagger-ui ```
+
 
 ## add swagger endpoints to your application
 We will now add swagger to your application; these endpoints will serve the swagger assets and the JSON files that represent your API.
