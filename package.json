@@ -1,7 +1,7 @@
 {
   "name": "express-swagger",
   "version": "0.0.1",
-  "description": "Serving swagger via express; with endpoint configuration in JSON",
+  "description": "Serving swagger via express; with API endpoint configuration in JSON",
   "homepage": "https://github.com/andrewkeig/express-swagger",
   "author": {
     "name": "Andrew Keig",

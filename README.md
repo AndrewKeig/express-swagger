@@ -3,10 +3,17 @@ express-swagger
 
 express-swagger hosts swagger enabled endpoints via express; but unlike other implementations your API is respresented by raw swagger JSON files.
 
-Configuring these endpoints using JSON allows us to use these JSON files for validating swagger requests. todo : express-swagger-validation
+Configuring these endpoints using JSON allows us to use these JSON files for validating swagger requests. todo : express-swagger-validate
 
-## SwaggerUI
+
+## install
+
+```npm install express-swagger ``
+
+
+## install SwaggerUI client
 You will need to install the client for swagger
+
 ```npm install swagger-ui ```
 
 
@@ -22,8 +29,8 @@ We will now add swagger to your application; these endpoints will serve the swag
 ```
 swagger(app, {
   statics : '/public/swagger/', 
-  index : '/test/swagger/index.json', 
-  resources : '/test/swagger/', 
+  index : '/swagger/index.json', 
+  resources : '/swagger/', 
   title : 'node swagger', 
   applicationUrl : 'http://127.0.0.1:3000/api-docs.json' 
 });
@@ -174,9 +181,7 @@ The below file ```./swagger/user.json``` is for a ```/api-docs.json/user``` endp
 ```
 
 
-## Test
+## run test
 With your API/application running; you can run the tests; with this.
 
-```
-grunt test
-```
+```grunt test```
