@@ -25,14 +25,16 @@ We will now add swagger to your application; these endpoints will serve the swag
 3. is the location of your resources
 4. title is the name given to th swagger web site
 5. applicationUrl is the url of your application
+5. endPoint is the api endpoint which returns the index file
  
 ```
 swagger(app, {
-  statics : '/public/swagger/', 
-  index : '/swagger/index.json', 
-  resources : '/swagger/', 
+  statics : '/test/public/swagger/', 
+  index : '/test/swagger/index.json', 
+  resources : '/test/swagger/', 
   title : 'node swagger', 
-  applicationUrl : 'http://127.0.0.1:3000/api-docs.json' 
+  applicationUrl : 'http://127.0.0.1:3000',
+  endPoint : '/api-docs.json' 
 });
 ```
 
@@ -89,7 +91,7 @@ This file contains a list of api endpoints; each one is represented by another J
 {
   "apiVersion":"1.0",
   "swaggerVersion":"1.2.5",
-  "basePath":"http://127.0.0.1:3000",
+  "basePath":"",
   "apis":[
   {
     "path":"/api-docs.json/user",
@@ -107,7 +109,7 @@ The below file ```./swagger/user.json``` is for a ```/api-docs.json/user``` endp
 {
   "apiVersion": "1.0",
   "swaggerVersion": "1.2.5",
-  "basePath": "http://127.0.0.1:3000",
+  "basePath": "",
   "apis": [
     {
       "path": "/user",

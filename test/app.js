@@ -15,7 +15,8 @@ swagger(app, {
   index : '/test/swagger/index.json', 
   resources : '/test/swagger/', 
   title : 'node swagger', 
-  applicationUrl : 'http://127.0.0.1:3000/api-docs.json' 
+  applicationUrl : 'http://127.0.0.1:3000',
+  endPoint : '/api-docs.json' 
 });
 
 app.get('/heartbeat', function (req, res, next) {
