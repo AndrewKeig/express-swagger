@@ -54,11 +54,12 @@ app.set('views', 'public');
 app.set('port', 3000);
 
 swagger(app, {
-  statics : '/public/swagger/', 
+  statics : '/test/public/swagger/', 
   index : '/test/swagger/index.json', 
   resources : '/test/swagger/', 
   title : 'node swagger', 
-  applicationUrl : 'http://127.0.0.1:3000/api-docs.json' 
+  applicationUrl : 'http://127.0.0.1:3000',
+  endPoint : '/api-docs.json' 
 });
 
 app.get('/user', function (req, res, next) {
